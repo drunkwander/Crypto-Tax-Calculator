@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2299.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Crypto Tax Calculator&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;body&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Crypto Tax Calculator&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;form&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;label for="buy-price"&gt;Purchase Price:&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="number" id="buy-price" name="buy-price" required&gt;&lt;br&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;label for="sell-price"&gt;Sale Price:&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="number" id="sell-price" name="sell-price" required&gt;&lt;br&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;label for="quantity"&gt;Quantity:&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="number" id="quantity" name="quantity" required&gt;&lt;br&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;label for="tax-rate"&gt;Tax Rate:&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="number" id="tax-rate" name="tax-rate" value="25"&gt;&lt;br&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;label for="tax-free-threshold"&gt;Tax-Free Threshold:&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="number" id="tax-free-threshold" name="tax-free-threshold"&gt;&lt;br&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="button" onclick="calculateTax()"&gt;Calculate&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/form&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p id="tax-amount"&gt;&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>function calculateTax() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const buyPrice = document.getElementById("buy-price").value;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const sellPrice = document.getElementById("sell-price").value;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const quantity = document.getElementById("quantity").value;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const taxRate = document.getElementById("tax-rate").value / 100;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const taxFreeThreshold = document.getElementById("tax-free-threshold").value;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let capitalGain = (sellPrice - buyPrice) * quantity;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (taxFreeThreshold &amp;&amp; capitalGain &lt;= taxFreeThreshold) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>capitalGain = 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const taxAmount = capitalGain * taxRate;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.getElementById("tax-amount").innerHTML = `Your tax liability is: $${taxAmount.toFixed(2)}`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="ads"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9376669309196056"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>crossorigin="anonymous"&gt;&lt;/script&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;!-- CRYPTO TAX CALCULATOR --&gt;</span></p>
+<p class="p1"><span class="s1">&lt;ins class="adsbygoogle"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>style="display:block"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>data-ad-client="ca-pub-9376669309196056"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>data-ad-slot="6221156747"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>data-ad-format="auto"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>data-full-width-responsive="true"&gt;&lt;/ins&gt;</span></p>
+<p class="p1"><span class="s1">&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>(adsbygoogle = window.adsbygoogle || []).push({});</span></p>
+<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
